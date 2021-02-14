@@ -17,7 +17,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(middleware::Logger::default())
             .configure(router::router)
     })
-    .bind("127.0.0.1:8083")
+    .bind(":8083")
     .expect("bind addr failed")
     .run()
     .await
