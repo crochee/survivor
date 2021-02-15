@@ -1542,10 +1542,13 @@ checksum = "213701ba3370744dcd1a12960caa4843b3d68b4d1c0a5d575e0d65b2ee9d16c0"
 name = "survivor"
 version = "0.1.0"
 dependencies = [
+ "actix-http",
  "actix-web",
+ "futures-util",
  "log",
  "log4rs",
  "serde",
+ "serde_json",
 ]
 
 [[package]]

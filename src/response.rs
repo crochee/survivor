@@ -1,19 +1,20 @@
-use serde::Serialize;
 use std::{error::Error, fmt};
 
+use serde::Serialize;
+
 #[derive(Debug, Serialize)]
-pub struct ResponseError {
-    code: usize,
+pub struct ServiceError {
     message: String,
+    code: usize,
 }
 
-impl ResponseError {
-    pub fn new(code: usize, message: String) -> ResponseError {
-        ResponseError { code, message }
+impl ServiceError {
+    pub fn new(code: usize, message: String) -> Self {
+        ServiceError { code, message }
     }
 }
 
-impl fmt::Display for ResponseError {
+impl fmt::Display for ServiceError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
@@ -23,10 +24,10 @@ impl fmt::Display for ResponseError {
     }
 }
 
-impl Error for ResponseError {}
+impl Error for ServiceError {}
 
 #[test]
 fn test_response_error() {
-    let err = ResponseError::new(500, String::from("recovery"));
+    let err = ServiceError::new(500, String::from("recovery"));
     println!("{}", err)
 }
