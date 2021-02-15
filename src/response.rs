@@ -2,6 +2,21 @@ use std::{error::Error, fmt};
 
 use serde::Serialize;
 
+/// web uses ServiceError to response some error
+/// # Example
+/// ```rust
+/// use actix_web::{http::StatusCode, post, web, HttpResponse, Responder};
+///
+/// use crate::ServiceError;
+///
+/// #[post("/bucket/{bucket_name}")]
+/// pub async fn create_bucket(web::Path(bucket_name): web::Path<String>) -> impl Responder {
+///               HttpResponse::Ok()
+///                     .json(ServiceError::new(500, bucket_name))
+///                     .with_status(StatusCode::INTERNAL_SERVER_ERROR)
+/// }
+/// ```
+///
 #[derive(Debug, Serialize)]
 pub struct ServiceError {
     message: String,

@@ -14,7 +14,7 @@ use log::info;
 pub use crate::config::SAVE_ROOT_PATH;
 pub use crate::response::ServiceError;
 
-/// rust web use actix-web 3.3.2 demo
+/// rust web use actix-web 3.3.2 demo,
 /// it's uesd to study rust
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
